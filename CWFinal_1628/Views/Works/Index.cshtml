@@ -1,0 +1,80 @@
+﻿@model IEnumerable<CWFinal_1628.Models.Work>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .mid {
+        text-align: center;
+    }
+</style>
+
+<h2 class="mid">Manager Works</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<div class="nav navbar-right">
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0 btn-primary" type="submit">Search</button>
+    </form>
+</div>
+<br />
+<br />
+<br />
+<table class="table table-striped table-hover table-bordered">
+    <thead class="alert-info">
+        <tr>
+            <th class="mid">
+                Builder
+            </th>
+            <th class="mid">
+                Project
+            </th>
+            <th class="mid">
+                Supervisor
+            </th>
+            <th class="mid">
+                @Html.DisplayNameFor(model => model.WorkName)
+            </th>
+            <th class="mid">
+                @Html.DisplayNameFor(model => model.Deadline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Progress)
+            </th>
+            <th class="mid">Action</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Builder.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supervisor.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deadline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Progress)
+            </td>
+            <td class="mid">
+                @Html.ActionLink("Edit", "Edit", new { id = item.WorkID }, new {@class ="btn btn-warning" }) 
+                @Html.ActionLink("Details", "Details", new { id = item.WorkID }, new { @class = "btn btn-info" }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.WorkID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

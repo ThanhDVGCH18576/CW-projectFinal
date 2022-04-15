@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CWFinal_1628.Models.Material>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .mid {
+        text-align: center;
+    }
+</style>
+<h2 class="mid">Manager Materials</h2>
+
+<p style="padding-bottom: 20px">
+    @Html.ActionLink("Create New", "Create", null, new { @class = " btn  btn-success" })
+</p>
+<div class="nav navbar-right">
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0 btn-primary" type="submit">Search</button>
+    </form>
+</div>
+<br />
+<br />
+<br />
+<table class="table table-striped table-hover table-bordered">
+    <thead class="alert-info">
+        <tr>
+            <th class="mid">
+                @Html.DisplayNameFor(model => model.MaterialType.TypeName)
+            </th>
+            <th class="mid">
+                @Html.DisplayNameFor(model => model.MaterialName)
+            </th>
+            <th class="mid">
+                @Html.DisplayNameFor(model => model.MaterialCode)
+            </th>
+            <th class="mid">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="mid">Action</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaterialType.TypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaterialName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaterialCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td class="mid">
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaterialID }, new { @class = " btn  btn-warning  " }) 
+                @Html.ActionLink("Details", "Details", new { id = item.MaterialID }, new { @class = " btn  btn-info  " }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaterialID }, new { @class = " btn  btn-danger  " })
+            </td>
+        </tr>
+    }
+
+</table>
